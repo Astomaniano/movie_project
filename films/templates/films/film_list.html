@@ -1,0 +1,25 @@
+{% extends 'films/layout.html' %}
+
+{% block title %}Список фильмов{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="my-4 text-center">Список фильмов</h2> <!-- Центрируем заголовок -->
+    <ul class="list-group">
+        {% for film in films %}
+            <li class="list-group-item mb-3 p-4" style="background-color: #f9f9f9; border-radius: 8px;"> <!-- Добавляем отступы, цвет фона и радиус границы -->
+                <h3 class="mb-2 font-italic" style="text-decoration: underline;">{{ film.title }}</h3> <!-- Уменьшаем заголовок -->
+                <p class="text-muted">{{ film.description }}</p> <!-- Добавляем muted стиль к описанию -->
+                <blockquote class="blockquote">
+                    <p class="mb-0 font-italic">{{ film.review }}</p> <!-- Добавляем курсив для цитат -->
+                </blockquote>
+            </li>
+        {% empty %}
+            <li class="list-group-item text-center">Нет добавленных фильмов.</li> <!-- Центрируем текст, если фильмов нет -->
+        {% endfor %}
+    </ul>
+    <div class="text-center"> <!-- Центрируем кнопку -->
+        <a href="{% url 'add_film' %}" class="btn btn-success mt-4">Добавить новый фильм</a> <!-- Меняем цвет кнопки на зелёный -->
+    </div>
+</div>
+{% endblock %}

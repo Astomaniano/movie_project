@@ -1,0 +1,26 @@
+{% extends 'films/layout.html' %}
+
+{% block title %}Добавить фильм{% endblock %}
+
+{% block content %}
+    <h2 class="my-4 text-center">Добавить фильм</h2>
+<div class="container mt-5 text-center">
+    <form method="post">
+    {% csrf_token %}
+        <div class="form-group">
+            {{ form.title }}
+        </div>
+        <div class="form-group">
+            {{ form.description }}
+        </div>
+        <div class="form-group">
+            {{ form.review }}
+        </div>
+    <button type="submit" class="btn btn-success">Добавить новость</button>
+    </form>
+    <a href="{% url 'film_list' %}" class="btn btn-secondary mt-3">Список фильмов</a>
+</div>
+{% endblock %}
+
+
+
